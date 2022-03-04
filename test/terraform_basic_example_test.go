@@ -9,13 +9,13 @@ import (
 
 func TestTerraformBasicExample(t *testing.T) {
 
-	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+	terraformOptions := &terraform.Options{
 		TerraformDir: "../examples/terraform-basic-example",
 
 		// Logger: logger.Discard,
 
 		MaxRetries: 0,
-	})
+	}
 
 	defer terraform.Destroy(t, terraformOptions)
 
