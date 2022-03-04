@@ -14,7 +14,7 @@ func TestTerraformBasicExample(t *testing.T) {
 
 		// Logger: logger.Discard,
 
-		NoStderr: true,
+		MaxRetries: 0,
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
