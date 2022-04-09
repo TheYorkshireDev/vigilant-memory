@@ -36,5 +36,5 @@ jobs:
 
       - name: Run Intergration Tests
         run: |
-          echo Hello World
-
+          cd test/
+          go test -v -tags=integration

@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestStaticSiteValidity(t *testing.T) {
+func TestJoinHypenValidity(t *testing.T) {
 	t.Parallel()
 
 	_fixturesDir := "./fixtures"
