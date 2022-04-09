@@ -29,6 +29,10 @@ jobs:
           terraform_version: 1.0.11
           terraform_wrapper: false
 
+      - name: Run Unit Tests
+        run: |
+          go test -v -tags=unit
+
       - name: Run Intergration Tests
         run: |
           echo Hello World
