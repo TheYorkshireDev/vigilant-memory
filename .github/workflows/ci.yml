@@ -31,6 +31,7 @@ jobs:
 
       - name: Run Unit Tests
         run: |
+          cd test/
           go test -v -tags=unit
 
       - name: Run Intergration Tests
