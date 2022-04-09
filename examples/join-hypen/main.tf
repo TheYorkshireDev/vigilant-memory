@@ -7,7 +7,7 @@ variable "example_input_two" {
 }
 
 module "join_up" {
-  source = "../../../modules/join-hypen"
+  source = "../../modules/join-hypen"
 
   input_one = var.example_input_one
   input_two = var.example_input_two
