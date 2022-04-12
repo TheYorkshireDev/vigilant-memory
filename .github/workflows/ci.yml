@@ -37,7 +37,6 @@ jobs:
       - name: Run Unit Tests
         run: |
           cd test/
-          gotestsum --format short-verbose -- -tags=unit
           gotestsum --format testname -- -tags=unit
 
       - name: Run Intergration Tests
