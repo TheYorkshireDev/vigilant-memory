@@ -19,6 +19,11 @@ jobs:
         with:
           go-version: 1.13
 
+      - name: Setup gotestsum
+        uses: autero1/action-gotestsum@v1.0.0
+        with:
+          gotestsum_version: 1.8.0
+
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_wrapper: false
@@ -37,3 +42,7 @@ jobs:
         run: |
           go test -v
 
+      - name: Run Intergration Tests2
+        working-directory: tests
+        run: |
+          gotestsum --format testname
