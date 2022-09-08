@@ -1,3 +1,5 @@
+//go:build integration
+
 package test
 
 import (
@@ -21,8 +23,17 @@ func TestRepoNamingModule(t *testing.T) {
 		},
 	})
 
+	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
+
+	// Apply the infrastructure
 	terraform.InitAndApply(t, terraformOptions)
 	output := terraform.Output(t, terraformOptions, "repository_name")
 	assert.Equal(t, expectedName, output)
+
+	// Run perpetual diff
+	planResult := terraform.Plan(t, terratestOptions)
+
+	// Make sure the plan shows zero changes
+	assert.Contains(t, planResult, "No changes.")
 }
