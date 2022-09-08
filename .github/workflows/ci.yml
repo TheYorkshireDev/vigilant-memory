@@ -1,0 +1,24 @@
+name: "Test Module"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform:
+    name: "TerraTest"
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Run Unit Tests
+        run: |
+          echo "Run Unit Tests"
+
+      - name: Run Intergration Tests
+        run: |
+          echo "Run Intergration Tests"
+
