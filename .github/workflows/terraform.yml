@@ -11,9 +11,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - uses: hashicorp/setup-terraform@v2
+
       - name: Terraform fmt
         run: |
-          echo "terraform fmt -check -recursive -no-color -diff"
+          terraform fmt -check -recursive -no-color -diff
 
   validate:
     name: 'Run terraform validate'
@@ -22,7 +24,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - uses: hashicorp/setup-terraform@v2
+
       - name: Terraform Validate
         run: |
-          echo "terraform init -backend=false"
-          echo "terraform validate"
+          terraform init -backend=false
+          terraform validate
