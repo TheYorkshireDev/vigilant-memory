@@ -1,0 +1,54 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform:
+    name: "Tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.13
+
+      - name: Setup gotestsum
+        uses: autero1/action-gotestsum@v1.0.0
+        with:
+          gotestsum_version: 1.8.0
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
+
+      - name: Download Go Modules
+        working-directory: tests
+        run: |
+          go mod download
+
+      - name: Run Unit Tests
+        working-directory: tests 
+        run: |
+          go test -v -tags=unit
+
+      - name: Run Unit Tests2
+        working-directory: tests
+        run: |
+          gotestsum --format testname -- -tags=unit
+
+      - name: Run Intergration Tests
+        working-directory: tests 
+        run: |
+          go test -v -tags=integration
+
+      - name: Run Intergration Tests2
+        working-directory: tests
+        run: |
+          gotestsum --format testname -- -tags=integration
