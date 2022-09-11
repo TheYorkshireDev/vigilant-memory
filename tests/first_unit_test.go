@@ -25,5 +25,5 @@ func TestRepoNamingModuleUnit(t *testing.T) {
 
 	// Plan the infrastructure
 	output := terraform.InitAndPlan(t, terraformOptions)
-	assert.Contains(t, planResult, "No changes.")
+	assert.Contains(t, output, "No changes.")
 }
