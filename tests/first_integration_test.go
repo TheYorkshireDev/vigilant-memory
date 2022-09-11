@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRepoNamingModule(t *testing.T) {
+func TestRepoNamingModuleIntergration(t *testing.T) {
 	product := "aaa"
 	environment := "bbb"
 
@@ -32,7 +32,7 @@ func TestRepoNamingModule(t *testing.T) {
 	assert.Equal(t, expectedName, output)
 
 	// Run perpetual diff
-	planResult := terraform.Plan(t, terratestOptions)
+	planResult := terraform.Plan(t, terraformOptions)
 
 	// Make sure the plan shows zero changes
 	assert.Contains(t, planResult, "No changes.")

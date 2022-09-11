@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRepoNamingModule(t *testing.T) {
+func TestRepoNamingModuleUnit(t *testing.T) {
 	product := "aaa"
 	environment := "bbb"
 
